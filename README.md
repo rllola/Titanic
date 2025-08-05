@@ -1,6 +1,27 @@
-# titanic
+# Titanic
 
 Testing best practices for a Rust project with the github workflow.
+
+## Guide
+
+### Git hooks
+
+#### Pre-commit hook
+
+In order to save CI time and avoid the useless `rustfmt` commit, we can set a hook to run `cargo fmt --check` for us before commiting.
+
+Activate the hook
+```
+$ cd .git/hooks && mv pre-commit.sample pre-commit
+```
+
+Now modify the file `pre-commit`. Delete everything and just put :
+```bash
+cargo fmt --check
+```
+
+This hook will run the linter everytime before commiting change.
+
 
 ## License
 
