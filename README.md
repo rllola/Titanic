@@ -17,11 +17,15 @@ $ cd .git/hooks && mv pre-commit.sample pre-commit
 
 Now modify the file `pre-commit`. Delete everything and just put :
 ```bash
+# This line indicate to exit at the first error
+set -e 
+
 cargo fmt --check
 ```
 
 This hook will run the linter everytime before commiting change.
 
+Alternatively we can use the `pre-push` hook. This allows atomic commiting and we just make sure that some basic checks (e.g linting) are all green before it hit the CI. It would avoid re-running the CI for a linter error.
 
 ## License
 
